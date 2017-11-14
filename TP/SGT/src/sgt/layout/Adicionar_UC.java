@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sgt;
+package sgt.layout;
 
 /**
  *
- * @author tiagofraga
+ * @author cp74
  */
 public class Adicionar_UC extends javax.swing.JFrame {
 
