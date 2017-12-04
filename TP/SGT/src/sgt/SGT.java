@@ -5,7 +5,7 @@
  */
 package sgt;
 
-import sgt.layout.Inicio;
+import sgt.layout.AAInicio1;
 
 /**
  *
@@ -20,7 +20,7 @@ public class SGT {
         
        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                new AAInicio1().setVisible(true);
             }
        });
                
