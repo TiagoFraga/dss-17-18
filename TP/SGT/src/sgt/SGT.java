@@ -5,11 +5,9 @@
  */
 package sgt;
 
-import sgt.layout.AAInicio1;
-
 /**
  *
- * @author cp74
+ * @author tiagofraga
  */
 public class SGT {
 
@@ -17,14 +15,7 @@ public class SGT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-       java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AAInicio1().setVisible(true);
-            }
-       });
-               
-        
+        // TODO code application logic here
     }
     
 }
