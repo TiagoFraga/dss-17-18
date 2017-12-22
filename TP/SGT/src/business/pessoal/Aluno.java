@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business;
+package business.pessoal;
 
+import business.trocas.Troca;
+import business.pessoal.Utilizador;
 import java.util.ArrayList;
 import java.util.HashMap;
 
