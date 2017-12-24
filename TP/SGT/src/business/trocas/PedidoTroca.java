@@ -24,11 +24,16 @@ public class PedidoTroca extends Troca {
     }
 
     public int getNumDestino() {
-        return numDestino;
+        return this.numDestino;
     }
 
     public void setNumDestino(int numDestino) {
         this.numDestino = numDestino;
+    }
+
+    @Override
+    public String toString() {
+        return "PedidoTroca{" + "numDestino=" + numDestino + '}';
     }
     
     

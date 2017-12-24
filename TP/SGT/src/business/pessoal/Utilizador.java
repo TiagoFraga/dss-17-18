@@ -10,7 +10,7 @@ import business.aulas.UnidadeCurricular;
 import java.util.HashMap;
 
 
-public class Utilizador {
+public abstract class Utilizador {
     
     private int numero;
     private String nome;

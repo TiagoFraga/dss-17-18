@@ -18,6 +18,7 @@ public class UnidadeCurricular {
     
     private String codigo;
     private String nome;
+    private String abreviatura;
     private ArrayList<Turno> turnos;
     private ArrayList<Professor> professores;
     private Professor regente;
@@ -49,6 +50,11 @@ public class UnidadeCurricular {
         return regente;
     }
 
+    public String getAbreviatura() {
+        return this.abreviatura;
+    }
+
+    
     public HashMap<Turno, ArrayList<Troca>> getListaTrocas() {
         return listaTrocas;
     }
@@ -65,6 +71,11 @@ public class UnidadeCurricular {
         this.nome = nome;
     }
 
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
+
+    
     public void setTurnos(ArrayList<Turno> turnos) {
         this.turnos = turnos;
     }

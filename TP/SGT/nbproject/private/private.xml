@@ -5,14 +5,18 @@
         <group>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/trocas/PedidoTroca.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/pessoal/Utilizador.java</file>
+            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/data/TrocaDAO.java</file>
+            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/data/TurnoDAO.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/aulas/Turno.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/layout/JEditarUC.java</file>
-            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/Main.java</file>
+            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/data/UnidadeCurricularDAO.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/pessoal/Aluno.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/pessoal/Professor.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/layout/JProfessor.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/layout/JInicio.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/aulas/UnidadeCurricular.java</file>
+            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/data/UtilizadorDAO.java</file>
+            <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/start/Main.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/trocas/Troca.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/business/SGT.java</file>
             <file>file:/Users/tiagofraga/Desktop/DSS/Trabalhos/TP/SGT/src/layout/JAluno.java</file>

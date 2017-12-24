@@ -12,48 +12,58 @@ import java.util.HashMap;
 
 public class Turno {
     
+    
+    
     private String hora;
     private String codigo;
+    
     private HashMap<Aluno,Integer> faltas;
     private int capacidadeMaxima;
+    private int aulasPrevistas;
     private String sala;
     private String tipoAula;
     private Professor profALecionar;
 
-    public Turno(String hora, String codigo, int capacidadeMaxima, String sala, String tipoAula) {
+    public Turno(String hora, String codigo, int capacidadeMaxima, int aulasPrevistas, String sala, String tipoAula) {
         this.hora = hora;
         this.codigo = codigo;
         this.capacidadeMaxima = capacidadeMaxima;
+        this.aulasPrevistas = aulasPrevistas;
         this.sala = sala;
         this.tipoAula = tipoAula;
     }
 
     public String getHora() {
-        return hora;
+        return this.hora;
     }
 
     public String getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     public HashMap<Aluno, Integer> getFaltas() {
-        return faltas;
+        return this.faltas;
     }
 
     public int getCapacidadeMaxima() {
-        return capacidadeMaxima;
+        return this.capacidadeMaxima;
     }
 
+    public int getAulasPrevistas() {
+        return this.aulasPrevistas;
+    }
+    
+
     public String getSala() {
-        return sala;
+        return this.sala;
     }
 
     public String getTipoAula() {
-        return tipoAula;
+        return this.tipoAula;
     }
 
     public Professor getProfALecionar() {
-        return profALecionar;
+        return this.profALecionar;
     }
 
     public void setHora(String hora) {
@@ -70,6 +80,10 @@ public class Turno {
 
     public void setCapacidadeMaxima(int capacidadeMaxima) {
         this.capacidadeMaxima = capacidadeMaxima;
+    }
+
+    public void setAulasPrevistas(int aulasPrevistas) {
+        this.aulasPrevistas = aulasPrevistas;
     }
 
     public void setSala(String sala) {

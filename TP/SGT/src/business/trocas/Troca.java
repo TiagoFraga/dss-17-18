@@ -68,6 +68,13 @@ public class Troca {
         this.estado = estado;
     }
 
+    @Override
+    public String toString() {
+        return "UC= " + uc.getAbreviatura() + ":"+ origem + " -> " + destino;
+    }
+
+    
+    
   
     
     
