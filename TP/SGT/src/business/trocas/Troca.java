@@ -12,7 +12,7 @@ import business.aulas.UnidadeCurricular;
  *
  * @author tiagofraga
  */
-public class Troca {
+public abstract class Troca {
     
     private Turno origem;
     private Turno destino;
@@ -70,7 +70,7 @@ public class Troca {
 
     @Override
     public String toString() {
-        return "UC= " + uc.getAbreviatura() + ":"+ origem + " -> " + destino;
+        return "*T* " + this.numOrigem + " ** UC= " + uc.getAbreviatura() + ":"+ origem + " -> " + destino;
     }
 
     

@@ -11,7 +11,10 @@ import business.aulas.UnidadeCurricular;
 import business.pessoal.Aluno;
 import business.pessoal.Professor;
 import business.pessoal.Utilizador;
+import business.trocas.Troca;
+import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -21,8 +24,9 @@ public class JProfessor extends javax.swing.JFrame {
     
     private SGT sgt;
     private Professor professor;
-    private HashMap<UnidadeCurricular,Turno> cadeiras;
+    private HashMap<UnidadeCurricular,ArrayList<Turno>> cadeiras;
     private HashMap<String,UnidadeCurricular> listaUcs;
+    
    
     public JProfessor(SGT sgt, Utilizador utilizador) {
         initComponents();
@@ -30,12 +34,14 @@ public class JProfessor extends javax.swing.JFrame {
         this.professor = (Professor) utilizador;
         this.cadeiras = this.professor.getCadeiras();
         this.listaUcs = this.sgt.getListaUCs();
+        
         jLabel3.setText(this.professor.getNome());
         jComboBox3.setEnabled(false);
         jComboBox1.setEnabled(false);
         jButton1.setEnabled(false);
         jButton5.setEnabled(false);
-        if(this.professor.getIsDc()){
+        jList1.setEnabled(false);
+        if(this.professor.isIsDc()){
             jButton2.setEnabled(true);
             jButton3.setEnabled(true);
             jComboBox2.addItem(null);
@@ -187,9 +193,8 @@ public class JProfessor extends javax.swing.JFrame {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -256,31 +261,75 @@ public class JProfessor extends javax.swing.JFrame {
         UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
         if(u==null){
             jComboBox3.setEnabled(false);
+            jComboBox1.setEnabled(false);
+            jList1.setEnabled(false);
+            jButton1.setEnabled(false);
+            jButton5.setEnabled(false);
         }
         else{
-            if(this.professor.getIsDc()){
+            if(this.professor.isIsDc()){
                 jComboBox3.addItem(null);
                 for(Turno t : u.getTurnos()){
                     jComboBox3.addItem(t);
                 }
             }else{
                 jComboBox3.addItem(null);
-                jComboBox3.
+                for(UnidadeCurricular a : cadeiras.keySet()){
+                    if(a.getNome().equals(u.getNome())){
+                        for(Turno t : cadeiras.get(a)){
+                            jComboBox3.addItem(t);
+                        }
+                    }
+                    
+                }
             }
             jComboBox3.setEnabled(true);
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
+        Turno t = (Turno) jComboBox3.getSelectedItem();
+        if(t == null){
+            jList1.setEnabled(false);
+            jButton1.setEnabled(false);
+        }else{
+            jList1.setEnabled(true);
+            updateList();
+        }
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        // TODO add your handling code here:
+        UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
+        Turno t = (Turno) jComboBox3.getSelectedItem();
+        
+        if(t.getProfALecionar().getNumero() == this.professor.getNumero()){
+            jButton1.setEnabled(true);
+            
+        }
+        
+        if(u.getRegente().getNumero() == this.professor.getNumero()){
+            jComboBox1.addItem(null);
+            for(Turno a : u.getTurnos()){
+                if(a.getCapacidadeMaxima()!= a.getFaltas().size()){
+                    jComboBox1.addItem(a);
+                }
+                
+            }
+            jComboBox1.setEnabled(true);
+        }
+        
+        
     }//GEN-LAST:event_jList1MouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        Turno t = (Turno) jComboBox1.getSelectedItem();
+        if(t==null){
+            jButton5.setEnabled(false);
+        }else{
+            jButton5.setEnabled(true);
+            
+        }
+        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -292,11 +341,11 @@ public class JProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        JEditarUC editar = new JEditarUC(this.listaUcs, this.sgt.getListaProfs());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
    
@@ -307,7 +356,7 @@ public class JProfessor extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Turno> jComboBox1;
     private javax.swing.JComboBox<UnidadeCurricular> jComboBox2;
     private javax.swing.JComboBox<Turno> jComboBox3;
     private javax.swing.JLabel jLabel1;
@@ -320,4 +369,16 @@ public class JProfessor extends javax.swing.JFrame {
     private javax.swing.JList<Aluno> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void updateList() {
+      DefaultListModel<Aluno> lista= new DefaultListModel<Aluno>();
+      Turno t = (Turno) jComboBox3.getSelectedItem();
+      HashMap<Aluno,Integer> alunos = t.getFaltas();
+      
+      for(Aluno a : alunos.keySet()) {
+          lista.addElement(a); 
+      }
+        
+      jList1.setModel(lista);
+    }
 }

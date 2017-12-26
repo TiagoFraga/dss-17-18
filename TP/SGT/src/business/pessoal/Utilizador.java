@@ -8,15 +8,16 @@ package business.pessoal;
 import business.aulas.Turno;
 import business.aulas.UnidadeCurricular;
 import java.util.HashMap;
+import java.util.Observable;
 
 
-public abstract class Utilizador {
+public abstract class Utilizador extends Observable {
     
     private int numero;
     private String nome;
     private String mail;
     private String password;
-    private HashMap<UnidadeCurricular,Turno> cadeiras;
+    
 
     public int getNumero() {
         return numero;
@@ -34,9 +35,6 @@ public abstract class Utilizador {
         return password;
     }
 
-    public HashMap<UnidadeCurricular, Turno> getCadeiras() {
-        return cadeiras;
-    }
 
     public void setNumero(int numero) {
         this.numero = numero;
@@ -54,16 +52,12 @@ public abstract class Utilizador {
         this.password = password;
     }
 
-    public void setCadeiras(HashMap<UnidadeCurricular, Turno> cadeiras) {
-        this.cadeiras = cadeiras;
-    }
 
     public Utilizador(int numero, String nome, String mail, String password) {
         this.numero = numero;
         this.nome = nome;
         this.mail = mail;
         this.password = password;
-        this.cadeiras = new HashMap<UnidadeCurricular,Turno>();
     }
     
     

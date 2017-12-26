@@ -37,10 +37,11 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         initComponents();
         this.sgt = sgt;
         this.aluno = (Aluno) utilizador;
+        aluno.addObserver(this);
         this.cadeiras = this.aluno.getCadeiras();
         jLabel3.setText(this.aluno.getNome());
         
-        if(this.aluno.getEstatuto()){
+        if(this.aluno.isEstatuto()){
             jComboBox8.setEnabled(false);
             jButton7.setEnabled(false);
             
@@ -158,7 +159,6 @@ public class JAluno extends javax.swing.JFrame implements Observer {
             }
         });
 
-        jComboBox1.setSelectedIndex(-1);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -385,8 +385,8 @@ public class JAluno extends javax.swing.JFrame implements Observer {
                         .addComponent(jButton3)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
                         .addComponent(jLabel10)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8))
@@ -634,7 +634,8 @@ public class JAluno extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        JOptionPane.showMessageDialog(this, "Aluno Adicionado! ");
+        JOptionPane.showMessageDialog(this, "Nova atualização! ");
+        updateListUcs();
         updateListTrocas();
     }
 }

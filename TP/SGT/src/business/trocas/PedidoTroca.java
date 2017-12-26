@@ -33,7 +33,7 @@ public class PedidoTroca extends Troca {
 
     @Override
     public String toString() {
-        return "PedidoTroca{" + "numDestino=" + numDestino + '}';
+        return "*PT* " + getNumOrigem() + " ** UC= " + getUc().getAbreviatura() + ":"+ getOrigem() + " -> " + getDestino() + " ->" + this.numDestino;
     }
     
     

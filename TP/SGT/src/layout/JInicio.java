@@ -131,10 +131,14 @@ public class JInicio extends javax.swing.JFrame {
             if(utilizador instanceof Aluno){
                 JAluno aluno = new JAluno(this.sgt,utilizador);
                 jLabel6.setText("");
+                jTextField1.setText("");
+                jTextField2.setText("");
             }
             else if(utilizador instanceof Professor){
                 JProfessor prof = new JProfessor(this.sgt,utilizador);
                 jLabel6.setText("");
+                jTextField1.setText("");
+                jTextField2.setText("");
             }
         }
         
