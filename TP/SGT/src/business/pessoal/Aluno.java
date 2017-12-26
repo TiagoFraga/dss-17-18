@@ -12,10 +12,7 @@ import business.pessoal.Utilizador;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class Aluno extends Utilizador {
     
     private HashMap<UnidadeCurricular,Turno> cadeiras;
@@ -66,6 +63,10 @@ public class Aluno extends Utilizador {
     @Override
     public String toString() {
         return "*A*" + getNumero() + " -> " + getNome() + "*** E:" + this.estatuto;
+    }
+
+    public void removeTrocas(Turno origem) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

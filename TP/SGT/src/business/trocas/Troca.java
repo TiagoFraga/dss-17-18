@@ -8,10 +8,7 @@ package business.trocas;
 import business.aulas.Turno;
 import business.aulas.UnidadeCurricular;
 
-/**
- *
- * @author tiagofraga
- */
+
 public abstract class Troca {
     
     private Turno origem;

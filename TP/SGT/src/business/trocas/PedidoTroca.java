@@ -9,10 +9,7 @@ import business.trocas.Troca;
 import business.aulas.Turno;
 import business.aulas.UnidadeCurricular;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class PedidoTroca extends Troca {
     
     private int numDestino;

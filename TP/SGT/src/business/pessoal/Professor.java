@@ -11,10 +11,7 @@ import business.pessoal.Utilizador;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class Professor extends Utilizador {
     
     private HashMap<UnidadeCurricular,ArrayList<Turno>> cadeiras;

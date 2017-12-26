@@ -16,14 +16,18 @@ public class Turno {
     
     private String hora;
     private String codigo;
+    private Professor profALecionar;
     
     private HashMap<Aluno,Integer> faltas;
     private int capacidadeMaxima;
     private int aulasPrevistas;
     private String sala;
     private String tipoAula;
-    private Professor profALecionar;
 
+    
+    //**************************************************************************************************************
+    //******************************************* Construtores *****************************************************
+    
     public Turno(String hora, String codigo, int capacidadeMaxima, int aulasPrevistas, String sala, String tipoAula) {
         this.hora = hora;
         this.codigo = codigo;
@@ -32,6 +36,9 @@ public class Turno {
         this.sala = sala;
         this.tipoAula = tipoAula;
     }
+    
+    //**************************************************************************************************************
+    //******************************************* Get's e Set's ****************************************************
 
     public String getHora() {
         return this.hora;
@@ -96,6 +103,42 @@ public class Turno {
 
     public void setProfALecionar(Professor profALecionar) {
         this.profALecionar = profALecionar;
+    }
+    
+    //**************************************************************************************************************
+    //******************************************* Métodos Adicionais ***********************************************
+
+    public boolean marcaFalta(Aluno a) {
+        for(Aluno m : faltas.keySet()){
+            if(m.getNumero() == a.getNumero()){
+                int f = faltas.get(m);
+                f++;
+                faltas.put(m,f);
+                if(f == (0.25*aulasPrevistas)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void removeAluno(Aluno a) {
+        faltas.remove((a));
+    }
+
+    public void adicionaAluno(Aluno a) {
+        faltas.put(a,0);
+    }
+
+    Aluno getAluno(int numOrigem) {
+        for(Aluno a : this.faltas.keySet()){
+            if(a.getNumero()== numOrigem){
+                return a;
+            }
+        }
+        return null;
     }
     
     

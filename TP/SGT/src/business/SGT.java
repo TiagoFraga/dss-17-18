@@ -5,22 +5,22 @@
  */
 package business;
 
+import business.aulas.Turno;
 import business.aulas.UnidadeCurricular;
 import business.pessoal.Aluno;
 import business.pessoal.Professor;
 import business.pessoal.Utilizador;
+import business.trocas.PedidoTroca;
+import business.trocas.Troca;
 import java.util.HashMap;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class SGT {
 
     private Utilizador online;
     private HashMap<String,UnidadeCurricular> listaUCs;
     private HashMap<Integer,Professor> listaProfs;
-    private HashMap<Integer,Utilizador> listaUtilizadores;
+    private HashMap<Integer,Aluno> listaAlunos;
     
  //*******************************************************************************************************************
  //*********************************** Construtores e Getter's e Setter's ********************************************
@@ -29,7 +29,7 @@ public class SGT {
         this.online = null;
         this.listaUCs = new HashMap<String,UnidadeCurricular> ();
         this.listaProfs = new HashMap<Integer,Professor> ();
-        this.listaUtilizadores = new HashMap<Integer,Utilizador>();
+        this.listaAlunos = new HashMap<Integer,Aluno>();
     }
     
     public Utilizador getOnline() {
@@ -44,8 +44,8 @@ public class SGT {
         return this.listaProfs;
     }
 
-    public HashMap<Integer, Utilizador> getListaUtilizadores() {
-        return this.listaUtilizadores;
+    public HashMap<Integer, Aluno> getListaAlunos() {
+        return this.listaAlunos;
     }
      
     public void setOnline(Utilizador online) {
@@ -60,8 +60,8 @@ public class SGT {
         this.listaProfs = listaProfs;
     }
 
-    public void setListaUtilizadores(HashMap<Integer, Utilizador> listaUtilizadores) {
-        this.listaUtilizadores = listaUtilizadores;
+    public void setListaUtilizadores(HashMap<Integer, Aluno> listaAlunos) {
+        this.listaAlunos = listaAlunos;
     }
     
     
@@ -72,15 +72,27 @@ public class SGT {
 
    
     public Utilizador logIn(String numero, String password){
-        for(Integer i : this.listaUtilizadores.keySet()){
+        for(Integer i : this.listaProfs.keySet()){
             if(i == Integer.parseInt(numero)){
-                Utilizador u = this.listaUtilizadores.get(i);
+                Professor u = this.listaProfs.get(i);
                 String pass = u.getPassword();
                 if(pass.equals(password)){
                     return u;
                 }
             }
         }
+        
+        for(Integer i : this.listaAlunos.keySet()){
+            if(i == Integer.parseInt(numero)){
+                Aluno u = this.listaAlunos.get(i);
+                String pass = u.getPassword();
+                if(pass.equals(password)){
+                    return u;
+                }
+            }
+        }
+        
+        
         return null;
     }
    
@@ -88,16 +100,79 @@ public class SGT {
         this.online = null;
         this.listaUCs = new HashMap<String,UnidadeCurricular> ();
         this.listaProfs = new HashMap<Integer,Professor> ();
-        this.listaUtilizadores = new HashMap<Integer,Utilizador>();
+        this.listaAlunos = new HashMap<Integer,Aluno>();
     }
    
 
 //*******************************************************************************************************************
 //******************************************** Utilizador == Professor **********************************************
    
+    public void moveAluno(UnidadeCurricular u, Turno origem, Turno destino, Aluno a) {
+        u.moveAluno(origem, destino, a);
+    }
+
+    public void marcaFalta(UnidadeCurricular u, Turno t, Aluno a) {
+        u.marcaFalta(t, a);
+    }
+    
+    public void removeProf(UnidadeCurricular u, Professor p) {
+        u.removeProf(p);
+    }
+
+    public void setRegente(UnidadeCurricular u, Professor p) {
+        u.setRegente(p);
+    }
+
+    public void adicionaProf(UnidadeCurricular u, Professor p) {
+        u.adicionaProf(p);
+    }
  
 //*******************************************************************************************************************
 //******************************************** Utilizador == Aluno **************************************************
 
+    public void aceitarTroca(Aluno aluno, Troca troca) {
+        UnidadeCurricular u = troca.getUc();
+        if(troca instanceof PedidoTroca){
+            PedidoTroca pt = (PedidoTroca) troca;
+            Aluno destino = this.listaAlunos.get(pt.getNumDestino());
+            u.aceitarPedidoTroca(aluno,troca,destino);
+        }
+    }
+
+    public void rejeitarTroca(Aluno aluno, Troca troca) {
+        UnidadeCurricular u = troca.getUc();
+        if(troca instanceof PedidoTroca){
+            PedidoTroca pt = (PedidoTroca) troca;
+            Aluno destino = this.listaAlunos.get(pt.getNumDestino());
+            u.rejeitarPedidoTroca(aluno,troca,destino);
+        }
+        
+    }
+
+    public void cancelarTroca(Aluno aluno, Troca troca) {
+        UnidadeCurricular u = troca.getUc();
+        if(troca instanceof PedidoTroca){
+            PedidoTroca pt = (PedidoTroca) troca;
+            Aluno destino = this.listaAlunos.get(pt.getNumDestino());
+            u.cancelarPedidoTroca(aluno,troca,destino);
+        }else{
+            u.cancelarInscricaoTroca(aluno,troca);
+        }
+    }
+
+    public boolean inscreverListaTrocas(UnidadeCurricular u, Turno origem, Turno destino, Aluno aluno) {
+        boolean b = u.inscreverListaTrocas(origem, destino, aluno);
+        return b;
+    }
+    
+    public void enviarPedidoTroca(UnidadeCurricular u, Aluno aluno, Turno origem, Turno destino, Aluno enviar) {
+        u.enviarPedidoTroca(aluno, origem, destino, enviar);
+    }
+
+    
+
+    
+
+    
 
 }

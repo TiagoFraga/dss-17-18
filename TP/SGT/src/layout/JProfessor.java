@@ -15,11 +15,9 @@ import business.trocas.Troca;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class JProfessor extends javax.swing.JFrame {
     
     private SGT sgt;
@@ -192,9 +190,9 @@ public class JProfessor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton2)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -254,7 +252,12 @@ public class JProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
+        Turno t = (Turno) jComboBox3.getSelectedItem();
+        Aluno a = (Aluno) jList1.getSelectedValue();
+        
+        this.sgt.marcaFalta(u,t,a);
+        updateList();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -333,19 +336,27 @@ public class JProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
+        Turno origem = (Turno) jComboBox3.getSelectedItem();
+        Aluno a = (Aluno) jList1.getSelectedValue();
+        Turno destino = (Turno) jComboBox1.getSelectedItem();
+        this.sgt.moveAluno(u,origem,destino,a);
+        updateList();       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JEditarUC editar = new JEditarUC(this.listaUcs, this.sgt.getListaProfs());
+        JEditarUC editar = new JEditarUC(this.sgt,this.listaUcs, this.sgt.getListaProfs());
+        editar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        editar.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+       this.sgt.logOut();
+       this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
    

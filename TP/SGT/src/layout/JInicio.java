@@ -9,18 +9,15 @@ import business.SGT;
 import business.pessoal.Aluno;
 import business.pessoal.Professor;
 import business.pessoal.Utilizador;
+import javax.swing.JFrame;
 
 public class JInicio extends javax.swing.JFrame {
 
     private SGT sgt;
     
-    public JInicio() {
-        initComponents();
-    }
-
     public JInicio(SGT sgt) {
         this.sgt = sgt;
-        jLabel6.setText("");
+        jLabel6.setVisible(false);
         initComponents();
     }
     
@@ -129,14 +126,18 @@ public class JInicio extends javax.swing.JFrame {
         
         if(utilizador != null){
             if(utilizador instanceof Aluno){
-                JAluno aluno = new JAluno(this.sgt,utilizador);
-                jLabel6.setText("");
+                JAluno janelaAluno = new JAluno(this.sgt,utilizador);
+                janelaAluno.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                janelaAluno.setVisible(true);
+                jLabel6.setVisible(false);
                 jTextField1.setText("");
                 jTextField2.setText("");
             }
             else if(utilizador instanceof Professor){
-                JProfessor prof = new JProfessor(this.sgt,utilizador);
-                jLabel6.setText("");
+                JProfessor janelaProf = new JProfessor(this.sgt,utilizador);
+                janelaProf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                janelaProf.setVisible(true);
+                jLabel6.setVisible(false);
                 jTextField1.setText("");
                 jTextField2.setText("");
             }
@@ -145,6 +146,7 @@ public class JInicio extends javax.swing.JFrame {
         jTextField1.setText("");
         jTextField2.setText("");
         jLabel6.setText("ERRO: Numero ou Password errados, tente outra vez !!!");
+        jLabel6.setVisible(true);
          
     }//GEN-LAST:event_jButton1ActionPerformed
 

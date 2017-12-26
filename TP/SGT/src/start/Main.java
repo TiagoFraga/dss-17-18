@@ -6,17 +6,17 @@
 package start;
 
 import business.SGT;
+import javax.swing.JFrame;
 import layout.JInicio;
 
-/**
- *
- * @author tiagofraga
- */
+
 public class Main {
     
     public static void main(String[] args) {
         SGT sgt = new SGT();
         JInicio inicio = new JInicio(sgt);
+        inicio.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        inicio.setVisible(true);
     }
     
 }
