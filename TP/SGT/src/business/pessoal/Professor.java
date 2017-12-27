@@ -17,9 +17,8 @@ public class Professor extends Utilizador {
     private HashMap<UnidadeCurricular,ArrayList<Turno>> cadeiras;
     private boolean isDc;
 
-    public Professor(HashMap<UnidadeCurricular, ArrayList<Turno>> cadeiras, boolean isDc, int numero, String nome, String mail, String password) {
+    public Professor(boolean isDc, int numero, String nome, String mail, String password) {
         super(numero, nome, mail, password);
-        this.cadeiras = cadeiras;
         this.isDc = isDc;
     }
 
@@ -42,6 +41,11 @@ public class Professor extends Utilizador {
     @Override
     public String toString() {
         return "*P*" + getNumero() + " -> " + getNome();
+    }
+
+    public void addUcs(UnidadeCurricular aThis) {
+        this.cadeiras.put(aThis,null);
+        
     }
 
     

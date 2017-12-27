@@ -12,6 +12,7 @@ import business.pessoal.Aluno;
 import business.pessoal.Professor;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
 
 public class JEditarUC extends javax.swing.JFrame {
@@ -21,15 +22,17 @@ public class JEditarUC extends javax.swing.JFrame {
     private HashMap<Integer,Professor> listaProfs;
 
     public JEditarUC(SGT sgt,HashMap<String, UnidadeCurricular> listaUcs, HashMap<Integer, Professor> listaProfs) {
-        initComponents();
         this.sgt = sgt;
         this.listaUcs = listaUcs;
         this.listaProfs = listaProfs;
+        initComponents();
+        
         jLabel4.setVisible(false);
         jList1.setEnabled(false);
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
         jComboBox2.setEnabled(false);
         
         jComboBox1.addItem(null);
@@ -56,6 +59,7 @@ public class JEditarUC extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +113,13 @@ public class JEditarUC extends javax.swing.JFrame {
 
         jLabel5.setText("Professor:");
 
+        jButton4.setText("Editar Turno");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,6 +144,8 @@ public class JEditarUC extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3)
                                 .addGap(6, 6, 6)))
@@ -150,12 +163,13 @@ public class JEditarUC extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jButton4))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -170,7 +184,7 @@ public class JEditarUC extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
                     .addComponent(jLabel5))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,12 +199,14 @@ public class JEditarUC extends javax.swing.JFrame {
             jButton2.setEnabled(false);
             jButton3.setEnabled(false);
             jComboBox2.setEnabled(false);
+            jButton4.setEnabled(false);
         }
         else{
             jLabel4.setText(u.getRegente().getNome());
             jList1.setEnabled(true);
             jComboBox2.setEnabled(true);
             jComboBox2.addItem(null);
+            jButton4.setEnabled(true);
             for(Integer e : listaProfs.keySet()){
                 for(Professor p : u.getProfessores()){
                     if(p.getNumero() != e){
@@ -240,11 +256,19 @@ public class JEditarUC extends javax.swing.JFrame {
         jButton2.setEnabled(true);
     }//GEN-LAST:event_jList1MouseClicked
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        UnidadeCurricular u = (UnidadeCurricular) jComboBox1.getSelectedItem();
+        JEditarTurno novaJanela = new JEditarTurno(this.sgt, u);
+        novaJanela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        novaJanela.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<UnidadeCurricular> jComboBox1;
     private javax.swing.JComboBox<Professor> jComboBox2;
     private javax.swing.JLabel jLabel1;

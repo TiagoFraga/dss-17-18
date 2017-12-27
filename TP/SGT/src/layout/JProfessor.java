@@ -27,11 +27,11 @@ public class JProfessor extends javax.swing.JFrame {
     
    
     public JProfessor(SGT sgt, Utilizador utilizador) {
-        initComponents();
         this.sgt = sgt;
         this.professor = (Professor) utilizador;
         this.cadeiras = this.professor.getCadeiras();
         this.listaUcs = this.sgt.getListaUCs();
+        initComponents();
         
         jLabel3.setText(this.professor.getNome());
         jComboBox3.setEnabled(false);
@@ -49,8 +49,8 @@ public class JProfessor extends javax.swing.JFrame {
             
         }
         else{
-            jButton2.setEnabled(false);
-            jButton3.setEnabled(false);
+            jButton2.setVisible(false);
+            jButton3.setVisible(false);
             jComboBox2.addItem(null);
             for(UnidadeCurricular u: cadeiras.keySet()){
                 jComboBox2.addItem(u);

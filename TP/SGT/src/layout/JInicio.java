@@ -17,8 +17,8 @@ public class JInicio extends javax.swing.JFrame {
     
     public JInicio(SGT sgt) {
         this.sgt = sgt;
-        jLabel6.setVisible(false);
         initComponents();
+        jLabel6.setVisible(false);
     }
     
     

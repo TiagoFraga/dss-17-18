@@ -121,6 +121,7 @@ public class UnidadeCurricular {
 
     public void adicionaProf(Professor p) {
         this.professores.add(p);
+        p.addUcs(this);
     }
 
     public void marcaFalta(Turno t, Aluno a) {
@@ -228,6 +229,10 @@ public class UnidadeCurricular {
             }
         }
         
+    }
+
+    public void mudarProfALecionarTurno(Turno t, Professor p) {
+        t.setProfALecionar(p);
     }
     
     

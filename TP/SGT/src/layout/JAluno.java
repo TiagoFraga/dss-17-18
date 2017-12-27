@@ -31,11 +31,11 @@ public class JAluno extends javax.swing.JFrame implements Observer {
   
 
     public JAluno(SGT sgt, Utilizador utilizador) {
-        initComponents();
         this.sgt = sgt;
         this.aluno = (Aluno) utilizador;
-        aluno.addObserver(this);
         this.cadeiras = this.aluno.getCadeiras();
+        initComponents();
+        aluno.addObserver(this);
         jLabel3.setText(this.aluno.getNome());
         
         if(this.aluno.isEstatuto()){

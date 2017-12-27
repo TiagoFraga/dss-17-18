@@ -18,6 +18,7 @@ import java.util.HashMap;
 public class SGT {
 
     private Utilizador online;
+    
     private HashMap<String,UnidadeCurricular> listaUCs;
     private HashMap<Integer,Professor> listaProfs;
     private HashMap<Integer,Aluno> listaAlunos;
@@ -126,6 +127,10 @@ public class SGT {
     public void adicionaProf(UnidadeCurricular u, Professor p) {
         u.adicionaProf(p);
     }
+    
+    public void mudarProfALecionarTurno(UnidadeCurricular uc, Turno t, Professor p) {
+        uc.mudarProfALecionarTurno(t,p);
+    }
  
 //*******************************************************************************************************************
 //******************************************** Utilizador == Aluno **************************************************
@@ -169,10 +174,6 @@ public class SGT {
         u.enviarPedidoTroca(aluno, origem, destino, enviar);
     }
 
-    
-
-    
-
-    
+   
 
 }

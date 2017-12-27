@@ -15,17 +15,15 @@ import java.util.HashMap;
 
 public class Aluno extends Utilizador {
     
-    private HashMap<UnidadeCurricular,Turno> cadeiras;
     private boolean estatuto;
+    private HashMap<UnidadeCurricular,Turno> cadeiras;
     private HashMap <String, Boolean[]> horario;
     private ArrayList<Troca> trocas;
 
-    public Aluno(HashMap<UnidadeCurricular, Turno> cadeiras, boolean estatuto, HashMap<String, Boolean[]> horario, ArrayList<Troca> trocas, int numero, String nome, String mail, String password) {
+    public Aluno(boolean estatuto, int numero, String nome, String mail, String password) {
         super(numero, nome, mail, password);
-        this.cadeiras = cadeiras;
         this.estatuto = estatuto;
-        this.horario = horario;
-        this.trocas = trocas;
+       
     }
 
     public HashMap<UnidadeCurricular, Turno> getCadeiras() {
