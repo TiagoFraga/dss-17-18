@@ -278,7 +278,7 @@ public class SGT {
         ShiftDao shift = new ShiftDao();
         List<Turno> lista = shift.getShiftsOf(u.getCodigo());
         for(Turno t : lista ){
-            Optional<String> prof = shift.getShiftTeacher(t.getCodigo(), u.getCodigo());
+            Optional<String> prof = shift.getShiftTeacher(t.getCodigo().split("-")[0], u.getCodigo());
             String numero = prof.orElse("0");
             int num = parseMail(numero);
             Professor p = this.listaProfs.get(num);

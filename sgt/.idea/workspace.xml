@@ -77,7 +77,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Start.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Start.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/Start.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -90,8 +90,8 @@
       <file leaf-file-name="ShiftDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/ShiftDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="154" column="92" lean-forward="false" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
+            <state relative-caret-position="228">
+              <caret line="173" column="42" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1514589139213" expanded="true" signature="739:769" ph="SELECT * FRO... get_shifts" />
@@ -130,13 +130,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SGT.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SGT.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/SGT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+            <state relative-caret-position="398">
+              <caret line="288" column="46" lean-forward="true" selection-start-line="288" selection-start-column="46" selection-end-line="288" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#9950#9961#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/trocas/PedidoTroca.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/trocas/Troca.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/trocas/TrocaNormal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/SGT.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/SubjectDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/SubjectDaoApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/TradeDaoApi.java" />
@@ -208,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/ShiftDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/ShiftDaoApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/Start.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/SGT.java" />
       </list>
     </option>
   </component>
@@ -299,6 +300,17 @@
               <item name="org" type="462c0819:PsiDirectoryNode" />
               <item name="uminho" type="462c0819:PsiDirectoryNode" />
               <item name="sgt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dss1718g6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sgt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="uminho" type="462c0819:PsiDirectoryNode" />
+              <item name="sgt" type="462c0819:PsiDirectoryNode" />
+              <item name="business" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dss1718g6" type="b2602c69:ProjectViewProjectNode" />
@@ -472,16 +484,15 @@
       <workItem from="1514401976942" duration="587000" />
       <workItem from="1514460444873" duration="23700000" />
       <workItem from="1514540822221" duration="8585000" />
-      <workItem from="1514588852723" duration="642000" />
+      <workItem from="1514588852723" duration="1245000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48247000" />
+    <option name="totallyTimeSpent" value="48850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -492,7 +503,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19957082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -857,6 +868,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3000">
           <caret line="211" column="16" lean-forward="false" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -864,6 +878,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2925">
           <caret line="208" column="59" lean-forward="false" selection-start-line="208" selection-start-column="59" selection-end-line="208" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -946,16 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/SGT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/pessoal/Aluno.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -994,27 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/ShiftDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="154" column="92" lean-forward="false" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1514589139213" expanded="true" signature="739:769" ph="SELECT * FRO... get_shifts" />
-            <marker date="1514589139213" expanded="true" signature="1969:2019" ph="SELECT sgt.a... " />
-            <marker date="1514589139213" expanded="true" signature="2799:2828" ph="SELECT sgt.d... " />
-            <marker date="1514589139213" expanded="true" signature="3312:3338" ph="SELECT sgt.e... " />
-            <marker date="1514589139213" expanded="true" signature="3850:3875" ph="SELECT sgt.u... " />
-            <marker date="1514589139213" expanded="true" signature="4377:4417" ph="SELECT sgt.c... " />
-            <marker date="1514589139213" expanded="true" signature="4952:4986" ph="SELECT * FRO... get_shifts_of" />
-            <marker date="1514589139213" expanded="true" signature="6069:6103" ph="SELECT sgt.g... " />
-            <marker date="1514589139213" expanded="true" signature="6776:6812" ph="SELECT * FRO... get_subjects_by" />
-            <marker date="1514589139213" expanded="true" signature="7442:7479" ph="SELECT * FRO... get_shifts_by" />
-            <marker date="1514589139213" expanded="true" signature="8159:8210" ph="SELECT * FRO... get_shift_enrolled_students" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/SubjectDaoApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -1033,11 +1019,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/ShiftDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="173" column="42" lean-forward="false" selection-start-line="173" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1514589139213" expanded="true" signature="739:769" ph="SELECT * FRO... get_shifts" />
+            <marker date="1514589139213" expanded="true" signature="1969:2019" ph="SELECT sgt.a... " />
+            <marker date="1514589139213" expanded="true" signature="2799:2828" ph="SELECT sgt.d... " />
+            <marker date="1514589139213" expanded="true" signature="3312:3338" ph="SELECT sgt.e... " />
+            <marker date="1514589139213" expanded="true" signature="3850:3875" ph="SELECT sgt.u... " />
+            <marker date="1514589139213" expanded="true" signature="4377:4417" ph="SELECT sgt.c... " />
+            <marker date="1514589139213" expanded="true" signature="4952:4986" ph="SELECT * FRO... get_shifts_of" />
+            <marker date="1514589139213" expanded="true" signature="6069:6103" ph="SELECT sgt.g... " />
+            <marker date="1514589139213" expanded="true" signature="6776:6812" ph="SELECT * FRO... get_subjects_by" />
+            <marker date="1514589139213" expanded="true" signature="7442:7479" ph="SELECT * FRO... get_shifts_by" />
+            <marker date="1514589139213" expanded="true" signature="8159:8210" ph="SELECT * FRO... get_shift_enrolled_students" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/Start.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/business/SGT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="288" column="46" lean-forward="true" selection-start-line="288" selection-start-column="46" selection-end-line="288" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9950#9961#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
