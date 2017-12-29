@@ -1,5 +1,8 @@
 package org.uminho.sgt.data.dao;
 
+import org.uminho.sgt.business.pessoal.Aluno;
+import org.uminho.sgt.business.pessoal.Professor;
+
 import java.util.List;
 import java.util.Optional;
 

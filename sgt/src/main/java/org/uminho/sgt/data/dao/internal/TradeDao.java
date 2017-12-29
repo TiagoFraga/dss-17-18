@@ -2,6 +2,8 @@ package org.uminho.sgt.data.dao.internal;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.uminho.sgt.business.trocas.PedidoTroca;
+import org.uminho.sgt.business.trocas.TrocaNormal;
 import org.uminho.sgt.data.PostgreSql;
 import org.uminho.sgt.data.dao.TradeDaoApi;
 

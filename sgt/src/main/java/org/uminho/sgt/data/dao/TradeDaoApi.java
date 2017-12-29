@@ -1,5 +1,8 @@
 package org.uminho.sgt.data.dao;
 
+import org.uminho.sgt.business.trocas.PedidoTroca;
+import org.uminho.sgt.business.trocas.TrocaNormal;
+
 import java.util.List;
 import java.util.Optional;
 

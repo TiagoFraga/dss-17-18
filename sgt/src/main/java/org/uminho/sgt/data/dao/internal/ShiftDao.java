@@ -2,6 +2,7 @@ package org.uminho.sgt.data.dao.internal;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.uminho.sgt.business.aulas.Turno;
 import org.uminho.sgt.data.PostgreSql;
 import org.uminho.sgt.data.dao.ShiftDaoApi;
 

@@ -1,5 +1,7 @@
 package org.uminho.sgt.data.dao;
 
+import org.uminho.sgt.business.aulas.UnidadeCurricular;
+
 import java.util.List;
 import java.util.Optional;
 

@@ -1,5 +1,7 @@
 package org.uminho.sgt.data.dao;
 
+import org.uminho.sgt.business.aulas.Turno;
+
 import java.util.List;
 import java.util.Optional;
 
