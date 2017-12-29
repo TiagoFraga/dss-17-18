@@ -13,11 +13,30 @@ import java.util.Observable;
 
 public abstract class Utilizador extends Observable {
     
+    
+    
     private int numero;
     private String nome;
     private String mail;
     private String password;
     
+    
+    
+    
+    //**************************************************************************************************************
+    //******************************************* Construtores *****************************************************
+    
+    
+    public Utilizador(int numero,String nome, String mail, String password) {
+        this.numero = numero;
+        this.nome = nome;
+        this.mail = mail;
+        this.password = password;
+    }
+    
+
+    //**************************************************************************************************************
+    //******************************************* Get's e Set's ****************************************************
 
     public int getNumero() {
         return numero;
@@ -35,7 +54,6 @@ public abstract class Utilizador extends Observable {
         return password;
     }
 
-
     public void setNumero(int numero) {
         this.numero = numero;
     }
@@ -52,13 +70,10 @@ public abstract class Utilizador extends Observable {
         this.password = password;
     }
 
+   
 
-    public Utilizador(int numero, String nome, String mail, String password) {
-        this.numero = numero;
-        this.nome = nome;
-        this.mail = mail;
-        this.password = password;
-    }
+
+   
     
     
 }

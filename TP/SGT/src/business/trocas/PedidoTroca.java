@@ -13,12 +13,27 @@ import business.aulas.UnidadeCurricular;
 public class PedidoTroca extends Troca {
     
     private int numDestino;
+    
+    //**************************************************************************************************************
+    //******************************************* Construtores *****************************************************
 
-    public PedidoTroca(Turno origem, Turno destino, int numOrigem, UnidadeCurricular uc, int numDestino) {
-        super(origem, destino, numOrigem, uc);
+    public PedidoTroca(int numOrigem, String estado,String ucString, int numDestino) {
+        super(numOrigem, estado,ucString);
         this.numDestino = numDestino;
         
     }
+
+    public PedidoTroca(Turno origem, Turno destino, int numero, UnidadeCurricular aThis, int numero0) {
+        super(numero, "Pendete", origem, destino, aThis);
+        this.numDestino = numero0;
+    }
+    
+    
+    
+    //**************************************************************************************************************
+    //******************************************* Get's e Set's ****************************************************
+
+   
 
     public int getNumDestino() {
         return this.numDestino;

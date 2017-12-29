@@ -82,7 +82,6 @@ public class JProfessor extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
@@ -146,13 +145,6 @@ public class JProfessor extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Sair");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Turno:");
 
         jButton5.setText("Mover");
@@ -190,10 +182,9 @@ public class JProfessor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +195,7 @@ public class JProfessor extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,13 +230,11 @@ public class JProfessor extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
+                        .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -258,24 +247,42 @@ public class JProfessor extends javax.swing.JFrame {
         
         this.sgt.marcaFalta(u,t,a);
         updateList();
+        jButton1.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
         if(u==null){
+            jComboBox3.removeAllItems();
             jComboBox3.setEnabled(false);
+            jComboBox1.removeAllItems();
             jComboBox1.setEnabled(false);
             jList1.setEnabled(false);
             jButton1.setEnabled(false);
             jButton5.setEnabled(false);
+            clearList();
         }
         else{
             if(this.professor.isIsDc()){
+                jButton1.setEnabled(false);
+                jButton5.setEnabled(false);
+                jList1.setEnabled(false);
+                jComboBox1.removeAllItems();
+                jComboBox1.setEnabled(false);
+                
+                jComboBox3.removeAllItems();
                 jComboBox3.addItem(null);
                 for(Turno t : u.getTurnos()){
                     jComboBox3.addItem(t);
                 }
             }else{
+                jButton1.setEnabled(false);
+                jButton5.setEnabled(false);
+                jList1.setEnabled(false);
+                jComboBox1.removeAllItems();
+                jComboBox1.setEnabled(false);
+                
+                jComboBox3.removeAllItems();
                 jComboBox3.addItem(null);
                 for(UnidadeCurricular a : cadeiras.keySet()){
                     if(a.getNome().equals(u.getNome())){
@@ -293,9 +300,12 @@ public class JProfessor extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         Turno t = (Turno) jComboBox3.getSelectedItem();
         if(t == null){
-            jList1.setEnabled(false);
             jButton1.setEnabled(false);
+            jButton5.setEnabled(false);  
+            jList1.setEnabled(false);
         }else{
+            jButton1.setEnabled(false);
+            jButton5.setEnabled(false);
             jList1.setEnabled(true);
             updateList();
         }
@@ -304,6 +314,7 @@ public class JProfessor extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
         Turno t = (Turno) jComboBox3.getSelectedItem();
+        jButton1.setEnabled(false);
         
         if(t.getProfALecionar().getNumero() == this.professor.getNumero()){
             jButton1.setEnabled(true);
@@ -311,6 +322,7 @@ public class JProfessor extends javax.swing.JFrame {
         }
         
         if(u.getRegente().getNumero() == this.professor.getNumero()){
+            jComboBox1.removeAllItems();
             jComboBox1.addItem(null);
             for(Turno a : u.getTurnos()){
                 if(a.getCapacidadeMaxima()!= a.getFaltas().size()){
@@ -351,13 +363,9 @@ public class JProfessor extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         JEditarUC editar = new JEditarUC(this.sgt,this.listaUcs, this.sgt.getListaProfs());
         editar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        editar.setResizable(false);
         editar.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       this.sgt.logOut();
-       this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
    
 
@@ -365,7 +373,6 @@ public class JProfessor extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<Turno> jComboBox1;
     private javax.swing.JComboBox<UnidadeCurricular> jComboBox2;
@@ -392,4 +399,12 @@ public class JProfessor extends javax.swing.JFrame {
         
       jList1.setModel(lista);
     }
+    
+    private void clearList(){
+        DefaultListModel model = new DefaultListModel();
+        model.clear();
+        jList1.setModel(model);
+    }
+    
+    
 }

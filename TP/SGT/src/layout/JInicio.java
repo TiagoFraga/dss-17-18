@@ -33,9 +33,9 @@ public class JInicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,13 +82,13 @@ public class JInicio extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(261, 261, 261)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
+                        .addGap(163, 163, 163)
                         .addComponent(jLabel6)))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -108,10 +108,10 @@ public class JInicio extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jButton1)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -121,32 +121,36 @@ public class JInicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String username = jTextField1.getText();
-        String password = jTextField2.getText();
+        String password = jPasswordField1.getText();
         Utilizador utilizador = this.sgt.logIn(username, password);
         
         if(utilizador != null){
             if(utilizador instanceof Aluno){
                 JAluno janelaAluno = new JAluno(this.sgt,utilizador);
                 janelaAluno.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                janelaAluno.setResizable(false);
                 janelaAluno.setVisible(true);
+                
                 jLabel6.setVisible(false);
                 jTextField1.setText("");
-                jTextField2.setText("");
+                jPasswordField1.setText("");
             }
             else if(utilizador instanceof Professor){
                 JProfessor janelaProf = new JProfessor(this.sgt,utilizador);
                 janelaProf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                janelaProf.setResizable(false);
                 janelaProf.setVisible(true);
                 jLabel6.setVisible(false);
                 jTextField1.setText("");
-                jTextField2.setText("");
+                jPasswordField1.setText("");
             }
-        }
+        }else{
         
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jLabel6.setText("ERRO: Numero ou Password errados, tente outra vez !!!");
-        jLabel6.setVisible(true);
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+            jLabel6.setText("ERRO: Numero ou Password errados, tente outra vez !!!");
+            jLabel6.setVisible(true);
+        }
          
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -160,7 +164,7 @@ public class JInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

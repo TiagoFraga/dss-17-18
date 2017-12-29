@@ -11,19 +11,42 @@ import business.aulas.UnidadeCurricular;
 
 public abstract class Troca {
     
+    private int numOrigem;
+    private String estado;
+    private String ucString;
+    
     private Turno origem;
     private Turno destino;
-    private int numOrigem;
     private UnidadeCurricular uc;
-    private String estado;
     
-    public Troca(Turno origem, Turno destino, int numOrigem, UnidadeCurricular uc) {
+    //**************************************************************************************************************
+    //******************************************* Construtores *****************************************************
+
+    public Troca(int numOrigem, String estado, String ucString) {
+        this.numOrigem = numOrigem;
+        this.estado = estado;
+        this.ucString = ucString;
+        
+        this.origem = null;
+        this.destino = null;
+        this.uc = null;
+    }
+
+    public Troca(int numOrigem, String estado, Turno origem, Turno destino, UnidadeCurricular uc) {
+        this.numOrigem = numOrigem;
+        this.estado = estado;
         this.origem = origem;
         this.destino = destino;
-        this.numOrigem = numOrigem;
         this.uc = uc;
-        this.estado = "PENDENTE";
     }
+
+    
+    
+   
+    
+    //**************************************************************************************************************
+    //******************************************* Get's e Set's ****************************************************
+
 
     public Turno getOrigem() {
         return origem;

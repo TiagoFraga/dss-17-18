@@ -12,7 +12,9 @@ import business.pessoal.Professor;
 import business.pessoal.Utilizador;
 import business.trocas.PedidoTroca;
 import business.trocas.Troca;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class SGT {
@@ -32,6 +34,14 @@ public class SGT {
         this.listaProfs = new HashMap<Integer,Professor> ();
         this.listaAlunos = new HashMap<Integer,Aluno>();
     }
+
+    public SGT(HashMap<String, UnidadeCurricular> listaUCs, HashMap<Integer, Professor> listaProfs, HashMap<Integer, Aluno> listaAlunos) {
+        this.listaUCs = listaUCs;
+        this.listaProfs = listaProfs;
+        this.listaAlunos = listaAlunos;
+    }
+    
+    
     
     public Utilizador getOnline() {
         return this.online;
@@ -131,6 +141,12 @@ public class SGT {
     public void mudarProfALecionarTurno(UnidadeCurricular uc, Turno t, Professor p) {
         uc.mudarProfALecionarTurno(t,p);
     }
+    
+    public void gerarTurno(){
+      
+    }
+    
+    
  
 //*******************************************************************************************************************
 //******************************************** Utilizador == Aluno **************************************************
@@ -139,7 +155,7 @@ public class SGT {
         UnidadeCurricular u = troca.getUc();
         if(troca instanceof PedidoTroca){
             PedidoTroca pt = (PedidoTroca) troca;
-            Aluno destino = this.listaAlunos.get(pt.getNumDestino());
+            Aluno destino = this.listaAlunos.get(pt.getNumOrigem());
             u.aceitarPedidoTroca(aluno,troca,destino);
         }
     }

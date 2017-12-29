@@ -12,6 +12,7 @@ import business.trocas.PedidoTroca;
 import business.trocas.TrocaNormal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 
 public class UnidadeCurricular {
@@ -23,18 +24,37 @@ public class UnidadeCurricular {
 
     private Professor regente;
     private ArrayList<Professor> professores;
-    
     private ArrayList<Turno> turnos;
     private HashMap<Turno, ArrayList<Troca>> listaTrocas;
 
     //**************************************************************************************************************
     //******************************************* Construtores *****************************************************
-    
-    
-    public UnidadeCurricular(String codigo, String nome) {
+
+    public UnidadeCurricular(String codigo, String nome, String abreviatura, int ano) {
         this.codigo = codigo;
         this.nome = nome;
+        this.abreviatura = abreviatura;
+        this.ano = ano;
+        
+        this.regente = null;
+        this.professores = new ArrayList<Professor>();
+        this.turnos = new ArrayList<Turno> ();
+        this.listaTrocas = new HashMap<Turno,ArrayList<Troca>>();
     }
+
+    public UnidadeCurricular(String codigo, String nome, String abreviatura, int ano, Professor regente, ArrayList<Professor> professores, ArrayList<Turno> turnos, HashMap<Turno, ArrayList<Troca>> listaTrocas) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.abreviatura = abreviatura;
+        this.ano = ano;
+        this.regente = regente;
+        this.professores = professores;
+        this.turnos = turnos;
+        this.listaTrocas = listaTrocas;
+    }
+    
+    
+    
     
     //**************************************************************************************************************
     //******************************************* Get's e Set's ****************************************************
@@ -104,6 +124,12 @@ public class UnidadeCurricular {
     public void setAno(int ano) {
         this.ano = ano;
     }
+
+    @Override
+    public String toString() {
+        return abreviatura;
+    }
+    
     
     
     //**************************************************************************************************************
@@ -142,39 +168,58 @@ public class UnidadeCurricular {
         origem.removeAluno(a);
         removeAlunoTrocas(origem,a);
         a.removeTrocas(origem);
+        a.alteraTurno(this,destino);
         destino.adicionaAluno(a);
     }
 
     public boolean inscreverListaTrocas(Turno origem, Turno destino, Aluno aluno) {
-        for(Turno t : listaTrocas.keySet()){
-            
-            if(t.getCodigo().equals(destino.getCodigo())){
-                ArrayList<Troca> lista = listaTrocas.get(t);
-                
-                for(Troca tr : lista){
-                    
-                    if(tr.getDestino().getCodigo().equals(origem.getCodigo())){
-                        
-                        moveAluno(origem, destino, aluno);
-                        
-                        Aluno a = t.getAluno(tr.getNumOrigem());
-                        moveAluno(destino,origem, a);
-                        lista.remove(tr);
-                        return true;
-                        
-                        
-                    }else{
-                        Troca nova = new TrocaNormal(origem,destino,aluno.getNumero(),this);
-                        
-                        for(Turno tu : listaTrocas.keySet()){
-                            if(t.getCodigo().equals(origem.getCodigo())){
-                                listaTrocas.get(tu).add(nova);
-                                aluno.getTrocas().add(nova);
-                                return false;
+        
+        if(listaTrocas.containsKey(destino)){
+        
+            for(Turno t : listaTrocas.keySet()){
+
+                if(t.getCodigo().equals(destino.getCodigo())){
+                    ArrayList<Troca> lista = listaTrocas.get(t);
+
+                    for(Troca tr : lista){
+
+                        if(tr.getDestino().getCodigo().equals(origem.getCodigo())){
+
+                            moveAluno(origem, destino, aluno);
+
+                            Aluno a = t.getAluno(tr.getNumOrigem());
+                            moveAluno(destino,origem, a);
+                            lista.remove(tr);
+                            return true;
+
+
+                        }else{
+                            Troca nova = new TrocaNormal(origem,destino,aluno.getNumero(),this);
+
+                            for(Turno tu : listaTrocas.keySet()){
+                                if(t.getCodigo().equals(origem.getCodigo())){
+                                    listaTrocas.get(tu).add(nova);
+                                    aluno.getTrocas().add(nova);
+                                    return false;
+                                }
                             }
                         }
                     }
                 }
+            }
+        }else{
+            if(listaTrocas.containsKey(origem)){
+                ArrayList<Troca> lista = this.listaTrocas.get(origem);
+                Troca nova = new TrocaNormal(origem,destino,aluno.getNumero(),this);
+                lista.add(nova);
+                this.listaTrocas.put(origem,lista);
+                aluno.getTrocas().add(nova);
+            }else{
+                ArrayList<Troca> lista = new ArrayList<Troca>();
+                Troca nova = new TrocaNormal(origem,destino,aluno.getNumero(),this);
+                lista.add(nova);
+                this.listaTrocas.put(origem,lista);
+                aluno.getTrocas().add(nova);
             }
         }
         return false;
@@ -183,7 +228,11 @@ public class UnidadeCurricular {
     public void enviarPedidoTroca(Aluno aluno, Turno origem, Turno destino, Aluno enviar) {
         Troca troca = new PedidoTroca(origem, destino, aluno.getNumero(), this, enviar.getNumero());
         aluno.getTrocas().add(troca);
+        System.out.println(aluno.toString());
+        System.out.println(aluno.getTrocas());
         enviar.getTrocas().add(troca);
+        System.out.println(enviar.toString());
+        System.out.println(enviar.getTrocas());
     }
 
     public void cancelarPedidoTroca(Aluno aluno, Troca troca, Aluno destino) {
@@ -204,7 +253,12 @@ public class UnidadeCurricular {
     }
 
     public void aceitarPedidoTroca(Aluno aluno, Troca troca, Aluno origem) {
+        
+        System.out.println("putas"+aluno.toString());
+        System.out.println("putas"+aluno.getTrocas());
         aluno.getTrocas().remove(troca);
+        System.out.println("putas"+origem.toString());
+        System.out.println("putas"+origem.getTrocas());
         origem.getTrocas().remove(troca);
         
         Turno t1 = troca.getOrigem();
@@ -219,20 +273,28 @@ public class UnidadeCurricular {
 
     private void removeAlunoTrocas(Turno origem, Aluno a) {
         for(Turno t : listaTrocas.keySet()){
+            
             if(t.getCodigo().equals(origem.getCodigo())){
+                
                 ArrayList<Troca> lista = this.listaTrocas.get(t);
-                for(Troca tr : lista){
-                    if(tr.getNumOrigem()== a.getNumero()){
-                        lista.remove(tr);
+                
+                for (Iterator<Troca> iterator = lista.iterator(); iterator.hasNext(); ) {
+                    Troca value = iterator.next();
+                    if (value.getNumOrigem() == a.getNumero()) {
+                        iterator.remove();
                     }
                 }
+                
             }
         }
         
     }
 
     public void mudarProfALecionarTurno(Turno t, Professor p) {
+        Professor antigo = t.getProfALecionar();
         t.setProfALecionar(p);
+        antigo.removeTurnos(this,t);
+        p.adicionaTurnos(this,t);
     }
     
     

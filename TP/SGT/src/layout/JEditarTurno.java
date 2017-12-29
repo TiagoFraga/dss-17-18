@@ -104,9 +104,7 @@ public class JEditarTurno extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(74, 74, 74)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,15 +124,18 @@ public class JEditarTurno extends javax.swing.JFrame {
                                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
-                                .addComponent(jButton1)))))
+                                .addComponent(jButton1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jLabel1)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
@@ -163,6 +164,10 @@ public class JEditarTurno extends javax.swing.JFrame {
         Turno t = (Turno) jComboBox1.getSelectedItem();
         Professor p = (Professor) jComboBox2.getSelectedItem();
         this.sgt.mudarProfALecionarTurno(uc,t,p);
+        updateList();
+        jComboBox2.setEnabled(false);
+        jComboBox2.setSelectedIndex(0);
+        jComboBox1.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -173,7 +178,7 @@ public class JEditarTurno extends javax.swing.JFrame {
         }
         else{
             jComboBox2.setEnabled(true);
-            updateList();
+            
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -212,4 +217,6 @@ public class JEditarTurno extends javax.swing.JFrame {
         
         jList2.setModel(lista);
     }
+    
+   
 }

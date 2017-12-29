@@ -10,6 +10,7 @@ import business.aulas.Turno;
 import business.aulas.UnidadeCurricular;
 import business.pessoal.Aluno;
 import business.pessoal.Utilizador;
+import business.trocas.PedidoTroca;
 import business.trocas.Troca;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +36,12 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         this.aluno = (Aluno) utilizador;
         this.cadeiras = this.aluno.getCadeiras();
         initComponents();
+        
+        jLabel17.setVisible(false);
+        jLabel18.setVisible(false);
         aluno.addObserver(this);
         jLabel3.setText(this.aluno.getNome());
+        
         
         if(this.aluno.isEstatuto()){
             jComboBox8.setEnabled(false);
@@ -50,6 +55,8 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         }else{
             jLabel6.setText("sem");
             jLabel8.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel12.setVisible(false);
             jComboBox7.setVisible(false);
             jComboBox8.setVisible(false);
             jButton7.setVisible(false);
@@ -116,7 +123,8 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -250,12 +258,11 @@ public class JAluno extends javax.swing.JFrame implements Observer {
 
         jLabel16.setText("Aluno:");
 
-        jButton6.setText("Sair");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel17.setText("Erro : Ja se inscreveu a essa UC");
+
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel18.setText("Erro: Ja enviou um pedido de troca");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -351,8 +358,10 @@ public class JAluno extends javax.swing.JFrame implements Observer {
                 .addGap(0, 2, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,7 +399,9 @@ public class JAluno extends javax.swing.JFrame implements Observer {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13)))
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,7 +410,9 @@ public class JAluno extends javax.swing.JFrame implements Observer {
                     .addComponent(jLabel14)
                     .addComponent(jLabel15)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -411,9 +424,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
                     .addComponent(jLabel12)
                     .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addGap(15, 15, 15))
+                .addGap(50, 50, 50))
         );
 
         pack();
@@ -421,23 +432,26 @@ public class JAluno extends javax.swing.JFrame implements Observer {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Troca troca = (Troca) jList1.getSelectedValue();
+        System.out.println("Aqui");
         this.sgt.cancelarTroca(this.aluno,troca);
         updateListTrocas();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         this.troca = jList1.getSelectedValue();
-        if(this.troca.getNumOrigem() == this.aluno.getNumero()){
-            jButton1.setEnabled(false);
-            jButton2.setEnabled(false);
-            jButton3.setEnabled(true);
-            
-        }else{
-            jButton1.setEnabled(true);
-            jButton2.setEnabled(true);
-            jButton3.setEnabled(false);
-            
-            
+        if(troca !=null){
+            if(this.troca.getNumOrigem() == this.aluno.getNumero()){
+                jButton1.setEnabled(false);
+                jButton2.setEnabled(false);
+                jButton3.setEnabled(true);
+
+            }else{
+                jButton1.setEnabled(true);
+                jButton2.setEnabled(true);
+                jButton3.setEnabled(false);
+
+
+            }
         }
     }//GEN-LAST:event_jList1MouseClicked
 
@@ -445,12 +459,18 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         Troca troca = (Troca) jList1.getSelectedValue();
         this.sgt.aceitarTroca(this.aluno,troca);
         updateListTrocas();
+        updateListUcs();
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Troca troca = (Troca) jList1.getSelectedValue();
         this.sgt.rejeitarTroca(this.aluno,troca);
         updateListTrocas();
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -469,6 +489,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
             jComboBox6.setEnabled(false);
             jButton5.setEnabled(false);
         }else{
+            jComboBox5.removeAllItems();
             String meuTurno = cadeiras.get(u).getTipoAula();
             jComboBox5.addItem(null);
             for(Turno t : u.getTurnos()){
@@ -489,6 +510,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
             jComboBox3.setEnabled(false);
             jButton4.setEnabled(false);
         }else{
+            jComboBox3.removeAllItems();
             String meuTurno = cadeiras.get(u).getTipoAula();
             jLabel10.setText(meuTurno);
         
@@ -509,6 +531,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
             jComboBox6.setEnabled(false);
             jButton5.setEnabled(false);
         }else{
+            jComboBox6.removeAllItems();
             HashMap<Aluno,Integer> listaAlunos = t.getFaltas();
             jComboBox6.addItem(null);
             for(Aluno a: listaAlunos.keySet()){
@@ -534,6 +557,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
             jComboBox8.setEnabled(false);
             jButton7.setEnabled(false);
         }else{
+            jComboBox8.removeAllItems();
             String meuTurno = cadeiras.get(u).getTipoAula();
             jComboBox8.addItem(null);
             for(Turno t : u.getTurnos()){
@@ -561,12 +585,30 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         UnidadeCurricular u = (UnidadeCurricular) jComboBox1.getSelectedItem();
         Turno destino = (Turno) jComboBox3.getSelectedItem();
         Turno origem = cadeiras.get(u);
+        
+        for(Troca t : this.aluno.getTrocas()){
+            if(t.getUc().getNome().equals(u.getNome())){
+                jLabel17.setVisible(true);
+                jComboBox3.removeAllItems();
+                jComboBox3.setEnabled(false);
+                jLabel10.setText("Meu Turno");
+                jComboBox1.setSelectedIndex(0);
+                return;
+            }
+        }
+        
         boolean b = this.sgt.inscreverListaTrocas(u,origem,destino,this.aluno);
         if(b){
             updateListUcs();
         }else{
             updateListTrocas();
         }
+        
+        jComboBox3.removeAllItems();
+        jComboBox3.setEnabled(false);
+        jLabel10.setText("Meu Turno");
+        jComboBox1.setSelectedIndex(0);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -575,8 +617,28 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         Turno origem = cadeiras.get(u);
         Aluno enviar = (Aluno) jComboBox6.getSelectedItem();
         
+        for(Troca t : this.aluno.getTrocas()){
+            if(t.getUc().getNome().equals(u.getNome())){
+                if(t instanceof PedidoTroca){
+                    jLabel18.setVisible(true);
+                    jComboBox5.removeAllItems();
+                    jComboBox5.setEnabled(false);
+                    jComboBox6.removeAllItems();
+                    jComboBox6.setEnabled(false);
+                    jComboBox4.setSelectedIndex(0);
+                    return;
+                }
+            }
+        }
+        
         this.sgt.enviarPedidoTroca(u,this.aluno,origem,destino,enviar);
         updateListTrocas();
+        
+        jComboBox5.removeAllItems();
+        jComboBox5.setEnabled(false);
+        jComboBox6.removeAllItems();
+        jComboBox6.setEnabled(false);
+        jComboBox4.setSelectedIndex(0);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -585,13 +647,11 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         Turno meuTurno = this.cadeiras.get(u);
         this.sgt.moveAluno(u,meuTurno, destino, this.aluno);
         updateListUcs();
+        jComboBox8.removeAllItems();
+        jComboBox8.setEnabled(false);
+        jComboBox7.setSelectedIndex(0);
         
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.sgt.logOut();
-        this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
 
 
 
@@ -601,7 +661,6 @@ public class JAluno extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<UnidadeCurricular> jComboBox1;
     private javax.swing.JComboBox<Turno> jComboBox3;
@@ -618,6 +677,8 @@ public class JAluno extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -636,6 +697,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
       DefaultListModel<Troca> lista= new DefaultListModel<Troca>();
       ArrayList<Troca> trocas = this.aluno.getTrocas();
       for(Troca t : trocas) {
+          
           lista.addElement(t); 
       }
         
@@ -659,5 +721,11 @@ public class JAluno extends javax.swing.JFrame implements Observer {
         JOptionPane.showMessageDialog(this, "Nova atualização! ");
         updateListUcs();
         updateListTrocas();
+    }
+    
+    private void clearList(){
+        DefaultListModel model = new DefaultListModel();
+        model.clear();
+        jList1.setModel(model);
     }
 }

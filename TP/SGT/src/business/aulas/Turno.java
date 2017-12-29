@@ -15,31 +15,49 @@ public class Turno {
     
     
     private String hora;
+    private String diaSemana;
     private String codigo;
-    private Professor profALecionar;
-    
-    private HashMap<Aluno,Integer> faltas;
-    private int capacidadeMaxima;
-    private int aulasPrevistas;
-    private String sala;
     private String tipoAula;
+    private int aulasPrevistas;
+    private int capacidadeMaxima;
+    private String sala;
+    
+    private Professor profALecionar;
+    private HashMap<Aluno,Integer> faltas;
 
     
     //**************************************************************************************************************
     //******************************************* Construtores *****************************************************
-    
-    public Turno(String hora, String codigo, int capacidadeMaxima, int aulasPrevistas, String sala, String tipoAula) {
+
+    public Turno(String hora, String diaSemana, String codigo, String tipoAula, int aulasPrevistas, int capacidadeMaxima, String sala) {
         this.hora = hora;
+        this.diaSemana = diaSemana;
         this.codigo = codigo;
-        this.capacidadeMaxima = capacidadeMaxima;
-        this.aulasPrevistas = aulasPrevistas;
-        this.sala = sala;
         this.tipoAula = tipoAula;
+        this.aulasPrevistas = aulasPrevistas;
+        this.capacidadeMaxima = capacidadeMaxima;
+        this.sala = sala;
+        
+        this.profALecionar = null;
+        this.faltas = new HashMap<Aluno,Integer>();
+    }
+
+    public Turno(String hora, String diaSemana, String codigo, String tipoAula, int aulasPrevistas, int capacidadeMaxima, String sala, Professor profALecionar, HashMap<Aluno, Integer> faltas) {
+        this.hora = hora;
+        this.diaSemana = diaSemana;
+        this.codigo = codigo;
+        this.tipoAula = tipoAula;
+        this.aulasPrevistas = aulasPrevistas;
+        this.capacidadeMaxima = capacidadeMaxima;
+        this.sala = sala;
+        this.profALecionar = profALecionar;
+        this.faltas = faltas;
     }
     
+    
+
     //**************************************************************************************************************
     //******************************************* Get's e Set's ****************************************************
-
     public String getHora() {
         return this.hora;
     }
@@ -65,6 +83,11 @@ public class Turno {
         return this.sala;
     }
 
+    public String getDiaSemana() {
+        return this.diaSemana;
+    }
+
+    
     public String getTipoAula() {
         return this.tipoAula;
     }
@@ -89,6 +112,10 @@ public class Turno {
         this.capacidadeMaxima = capacidadeMaxima;
     }
 
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
     public void setAulasPrevistas(int aulasPrevistas) {
         this.aulasPrevistas = aulasPrevistas;
     }
@@ -104,12 +131,20 @@ public class Turno {
     public void setProfALecionar(Professor profALecionar) {
         this.profALecionar = profALecionar;
     }
+
+    @Override
+    public String toString() {
+        return this.tipoAula;
+    }
+    
+    
     
     //**************************************************************************************************************
     //******************************************* Métodos Adicionais ***********************************************
 
     public boolean marcaFalta(Aluno a) {
         for(Aluno m : faltas.keySet()){
+            System.out.println(faltas.keySet().toString());
             if(m.getNumero() == a.getNumero()){
                 int f = faltas.get(m);
                 f++;
