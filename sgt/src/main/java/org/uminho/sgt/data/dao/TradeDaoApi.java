@@ -28,8 +28,7 @@ public interface TradeDaoApi {
    * @param intendedShift Student intended shift.
    * @param intendedSubject Subject to which the provided shift is associated with.
    */
-  void addDirectTrade(
-      final String student, final String intendedShift, final String intendedSubject);
+  void addDirectTrade(final String student, final String intendedShift, final String intendedSubject);
 
   /**
    * Registers a new trade by request, if params are valid.
@@ -74,6 +73,5 @@ public interface TradeDaoApi {
    * @return An optional string, containing either the addressed student or an empty (if request
    *     with provided params does not exist)
    */
-  Optional<String> getTradeByRequestStudentDestination(
-      final String fromStudent, final String subject);
+  Optional<String> getTradeByRequestStudentDestination(final String fromStudent, final String subject);
 }

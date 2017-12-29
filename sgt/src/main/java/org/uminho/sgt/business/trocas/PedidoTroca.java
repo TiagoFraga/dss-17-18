@@ -4,16 +4,16 @@ import org.uminho.sgt.business.aulas.Turno;
 import org.uminho.sgt.business.aulas.UnidadeCurricular;
 
 public class PedidoTroca extends Troca {
-
+  
   private int numDestino;
 
   // **************************************************************************************************************
   // ******************************************* Construtores
   // *****************************************************
 
-  public PedidoTroca(int numOrigem, String estado, String ucString, int numDestino) {
-    super(numOrigem, estado, ucString);
-    this.numDestino = numDestino;
+  public PedidoTroca(String mailOrigem,String mailDestino,String ucString, String estado) {
+    super(mailOrigem, estado, ucString);
+    this.numDestino = parseMail(mailDestino);
   }
 
   public PedidoTroca(
@@ -47,4 +47,10 @@ public class PedidoTroca extends Troca {
         + " ->"
         + this.numDestino;
   }
+  
+   private int parseMail(String mail) {
+        String parts[] = mail.split("@");
+        int numero = Integer.parseInt(parts[0]);
+        return numero;
+    }
 }

@@ -20,8 +20,8 @@ public class Aluno extends Utilizador {
   // ******************************************* Construtores
   // *****************************************************
 
-  public Aluno(boolean estatuto, int numero, String nome, String mail, String password) {
-    super(numero, nome, mail, password);
+  public Aluno(boolean estatuto, String nome, String mail) {
+    super(nome, mail);
     this.estatuto = estatuto;
 
     this.cadeiras = new HashMap<UnidadeCurricular, Turno>();
@@ -29,21 +29,15 @@ public class Aluno extends Utilizador {
     this.trocas = new ArrayList<Troca>();
   }
 
-  public Aluno(
-      boolean estatuto,
-      HashMap<UnidadeCurricular, Turno> cadeiras,
-      HashMap<String, Boolean[]> horario,
-      ArrayList<Troca> trocas,
-      int numero,
-      String nome,
-      String mail,
-      String password) {
+  public Aluno(boolean estatuto, HashMap<UnidadeCurricular, Turno> cadeiras, HashMap<String, Boolean[]> horario, ArrayList<Troca> trocas, int numero, String nome, String mail, String password) {
     super(numero, nome, mail, password);
     this.estatuto = estatuto;
     this.cadeiras = cadeiras;
     this.horario = horario;
     this.trocas = trocas;
   }
+
+
 
   // **************************************************************************************************************
   // ******************************************* Get's e Set's

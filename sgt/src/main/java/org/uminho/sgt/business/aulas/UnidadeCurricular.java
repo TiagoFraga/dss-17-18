@@ -38,15 +38,7 @@ public class UnidadeCurricular {
     this.listaTrocas = new HashMap<Turno, ArrayList<Troca>>();
   }
 
-  public UnidadeCurricular(
-      String codigo,
-      String nome,
-      String abreviatura,
-      int ano,
-      Professor regente,
-      ArrayList<Professor> professores,
-      ArrayList<Turno> turnos,
-      HashMap<Turno, ArrayList<Troca>> listaTrocas) {
+  public UnidadeCurricular(String codigo,String nome,String abreviatura,int ano,Professor regente,ArrayList<Professor> professores,ArrayList<Turno> turnos,HashMap<Turno, ArrayList<Troca>> listaTrocas) {
     this.codigo = codigo;
     this.nome = nome;
     this.abreviatura = abreviatura;

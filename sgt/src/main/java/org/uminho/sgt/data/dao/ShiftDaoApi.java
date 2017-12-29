@@ -29,17 +29,7 @@ public interface ShiftDaoApi {
    * @param teacher The teacher responsible to teach the shift. Must exist in database, otherwise
    *     shift creation will fail.
    */
-  void addShift(
-      final String code,
-      final String subject,
-      final String classType,
-      final String room,
-      final int capacity,
-      final int scheduled_classes,
-      final String weekday,
-      final String startTime,
-      final String endTime,
-      final String teacher);
+  void addShift(final String code,final String subject,final String classType,final String room,final int capacity,final int scheduled_classes,final String weekday,final String startTime,final String endTime,final String teacher);
 
   /**
    * Deletes shift, if exists.
@@ -82,7 +72,7 @@ public interface ShiftDaoApi {
    * @return List of shift codes (if subject does not exist or no shifts are associated with subject
    *     code, list will be empty).
    */
-  List<String> getShiftsOf(final String subject);
+  List<Turno> getShiftsOf(final String subject);
 
   /**
    * Gets current shift teacher.
@@ -110,4 +100,13 @@ public interface ShiftDaoApi {
    * @return List of shift codes lectured by provided teacher email for specified subject.
    */
   List<String> getShiftsBy(final String teacher_email, final String subject);
+  
+  
+/**
+   * Gets a list of currently enrolled students for a specific shift/subject.
+   * @param shift The shift code.
+   * @param subject The subject code.
+   * @return A list of student emails currently enrolled at specified shift/subject.
+   */
+  List<String> getShiftEnrolledStudents(final String shift, final String subject);
 }

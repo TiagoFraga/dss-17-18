@@ -141,8 +141,8 @@ public class ShiftDao implements ShiftDaoApi {
     }
   }
 
-  public List<String> getShiftsOf(final String subject) {
-    List<String> shifts = new ArrayList<>();
+  public List<Turno> getShiftsOf(final String subject) {
+    List<Turno> shifts = new ArrayList<>();
     try {
       this.connection = PostgreSql.connect();
       String query = "SELECT * FROM sgt.get_shifts_of(?)";
@@ -150,8 +150,18 @@ public class ShiftDao implements ShiftDaoApi {
       statement.setString(1, subject);
       ResultSet rows = statement.executeQuery();
 
-      while (rows.next()) {
-        shifts.add(rows.getString("shift_code"));
+       while (rows.next()) {
+        String hour = new String(rows.getString("start_time") + "-" + rows.getString("end_time"));
+        String code = new String(rows.getString("code") + "-" + rows.getString("subject"));
+        shifts.add(
+            new Turno(
+                hour,
+                rows.getString("weekday"),
+                code,
+                rows.getString("code"),
+                rows.getInt("scheduled_classes"),
+                rows.getInt("capacity"),
+                rows.getString("room")));
       }
     } catch (Exception e) {
       logger.error(e.getMessage());
@@ -221,6 +231,26 @@ public class ShiftDao implements ShiftDaoApi {
     } finally {
       PostgreSql.close(this.connection);
       return shifts;
+    }
+  }
+  
+  public List<String> getShiftEnrolledStudents(final String shift, final String subject) {
+    List<String> enrolled_students = new ArrayList<>();
+    try {
+      this.connection = PostgreSql.connect();
+      String query = "SELECT * FROM sgt.get_shift_enrolled_students(?, ?)";
+      PreparedStatement statement = this.connection.prepareStatement(query);
+      statement.setString(1, shift);
+      statement.setString(2, subject);
+      ResultSet rows = statement.executeQuery();
+      while (rows.next()) {
+        enrolled_students.add(rows.getString("student_email"));
+      }
+    } catch (Exception e) {
+      logger.error(e.getMessage());
+    } finally {
+      PostgreSql.close(this.connection);
+      return enrolled_students;
     }
   }
 }

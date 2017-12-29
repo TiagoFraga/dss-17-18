@@ -17,8 +17,8 @@ public abstract class Troca {
   // ******************************************* Construtores
   // *****************************************************
 
-  public Troca(int numOrigem, String estado, String ucString) {
-    this.numOrigem = numOrigem;
+  public Troca(String mailOrigem, String estado,String ucString) {
+    this.numOrigem = parseMail(mailOrigem);
     this.estado = estado;
     this.ucString = ucString;
 
@@ -46,6 +46,10 @@ public abstract class Troca {
   public void setOrigem(Turno origem) {
     this.origem = origem;
   }
+
+ public String getUcString() {
+    return ucString;
+ }
 
   public Turno getDestino() {
     return destino;
@@ -79,6 +83,13 @@ public abstract class Troca {
     this.estado = estado;
   }
 
+
+    public void setUcString(String ucString) {
+        this.ucString = ucString;
+    }
+
+  
+  
   @Override
   public String toString() {
     return "*T* "
@@ -90,4 +101,10 @@ public abstract class Troca {
         + " -> "
         + destino;
   }
+
+   private int parseMail(String mail) {
+        String parts[] = mail.split("@");
+        int numero = Integer.parseInt(parts[0]);
+        return numero;
+    }
 }

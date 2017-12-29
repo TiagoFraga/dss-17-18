@@ -24,14 +24,7 @@ public interface SubjectDaoApi {
    * @param year The subject year within degree level.
    * @param coordinator The subject coordinator (a teacher email. otherwise it will fail to create).
    */
-  void addSubject(
-      final String code,
-      final String description,
-      final String abbreviation,
-      final String course,
-      final String degree,
-      final int year,
-      final String coordinator);
+  void addSubject(final String code,final String description,final String abbreviation,final String course,final String degree,final int year,final String coordinator);
 
   /**
    * Deletes a subject, if exists.
@@ -57,4 +50,11 @@ public interface SubjectDaoApi {
    *     no shifts are yet created).
    */
   List<String> getTeachersOf(final String code);
+  
+  /**
+   * Updates current subject coordinator.
+   * @param code Subject code.
+   * @param newCoordinator New coordinator email.
+   */
+  void updateCoordinator(final String code, final String newCoordinator);
 }

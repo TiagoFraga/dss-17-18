@@ -122,4 +122,19 @@ public class SubjectDao implements SubjectDaoApi {
       return teachers;
     }
   }
+  
+  public void updateCoordinator(final String code, final String newCoordinator) {
+    try {
+      this.connection = PostgreSql.connect();
+      String query = "SELECT sgt.update_coordinator(?, ?)";
+      PreparedStatement statement = this.connection.prepareStatement(query);
+      statement.setString(1, code);
+      statement.setString(2, newCoordinator);
+      statement.execute();
+    } catch (Exception e) {
+      logger.error(e.getMessage());
+    } finally {
+      PostgreSql.close(this.connection);
+    }
+  }
 }

@@ -20,6 +20,13 @@ public abstract class Utilizador extends Observable {
     this.password = password;
   }
 
+  public Utilizador(String nome, String mail){
+    this.nome = nome;
+    this.mail = mail;
+    this.numero = parseMail(mail);
+    this.password = "";
+  }
+
   // **************************************************************************************************************
   // ******************************************* Get's e Set's
   // ****************************************************
@@ -55,4 +62,10 @@ public abstract class Utilizador extends Observable {
   public void setPassword(String password) {
     this.password = password;
   }
+
+    private int parseMail(String mail) {
+        String parts[] = mail.split("@");
+        int numero = Integer.parseInt(parts[0]);
+        return numero;
+    }
 }

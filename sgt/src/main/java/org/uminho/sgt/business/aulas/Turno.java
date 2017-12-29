@@ -22,14 +22,7 @@ public class Turno {
   // ******************************************* Construtores
   // *****************************************************
 
-  public Turno(
-      String hora,
-      String diaSemana,
-      String codigo,
-      String tipoAula,
-      int aulasPrevistas,
-      int capacidadeMaxima,
-      String sala) {
+  public Turno(String hora,String diaSemana,String codigo,String tipoAula,int aulasPrevistas,int capacidadeMaxima,String sala) {
     this.hora = hora;
     this.diaSemana = diaSemana;
     this.codigo = codigo;
