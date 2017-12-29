@@ -66,11 +66,10 @@ public interface ShiftDaoApi {
   void changeShiftTeacher(final String code, final String subject, final String newTeacher);
 
   /**
-   * Gets shift codes associated with a provided subject.
+   * Gets shifts associated with a provided subject.
    *
    * @param subject The subject code.
-   * @return List of shift codes (if subject does not exist or no shifts are associated with subject
-   *     code, list will be empty).
+   * @return List of shifts wrapped into Turno objects.
    */
   List<Turno> getShiftsOf(final String subject);
 

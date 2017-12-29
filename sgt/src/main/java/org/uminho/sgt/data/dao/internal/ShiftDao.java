@@ -152,13 +152,13 @@ public class ShiftDao implements ShiftDaoApi {
 
        while (rows.next()) {
         String hour = new String(rows.getString("start_time") + "-" + rows.getString("end_time"));
-        String code = new String(rows.getString("code") + "-" + rows.getString("subject"));
+        String code = new String(rows.getString("shift_code") + "-" + rows.getString("shift_subject"));
         shifts.add(
             new Turno(
                 hour,
                 rows.getString("weekday"),
                 code,
-                rows.getString("code"),
+                rows.getString("shift_code"),
                 rows.getInt("scheduled_classes"),
                 rows.getInt("capacity"),
                 rows.getString("room")));

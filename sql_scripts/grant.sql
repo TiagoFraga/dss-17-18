@@ -80,6 +80,10 @@ GRANT EXECUTE ON FUNCTION sgt.update_trade_by_request_state(student_email charac
 
 GRANT EXECUTE ON FUNCTION sgt.verify_login(email character varying, password character varying) TO g6;
 
+GRANT EXECUTE ON FUNCTION sgt.get_shift_enrolled_students(shift_code character varying, subject_code character varying) TO g6;
+
+GRANT EXECUTE ON FUNCTION sgt.update_coordinator(subject_code character varying, new_coordinator character varying) TO g6;
+
 GRANT ALL ON TABLE sgt.direct_trade TO g6;
 
 GRANT ALL ON TABLE sgt.shift TO g6;

@@ -69,7 +69,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---changed
 CREATE OR REPLACE FUNCTION sgt.add_subject(code VARCHAR, description VARCHAR, abbreviation VARCHAR, course VARCHAR, degree VARCHAR, year INTEGER, coordinator VARCHAR)
 RETURNS VOID AS $$
 BEGIN
@@ -89,7 +88,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---changed
 CREATE OR REPLACE FUNCTION sgt.add_shift(shift_code VARCHAR, subject_code VARCHAR, class_type VARCHAR, room VARCHAR, capacity INTEGER, scheduled_classes INTEGER, weekday VARCHAR, start_time VARCHAR, end_time VARCHAR, teacher VARCHAR)
 RETURNS VOID AS $$
 BEGIN
@@ -252,12 +250,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION sgt.get_shifts_of(subject_code VARCHAR)
-RETURNS TABLE (shift_code VARCHAR) AS $$
+RETURNS TABLE (shift_code VARCHAR, shift_subject VARCHAR, class_type sgt.CLASS_TYPE, room VARCHAR, capacity SMALLINT, scheduled_classes SMALLINT, weekday sgt.WEEKDAY, start_time TIME, end_time TIME, teacher VARCHAR) AS $$
 BEGIN
   PERFORM code FROM sgt.subject WHERE code = subject_code;
   IF FOUND THEN
     RETURN QUERY
-      SELECT code
+      SELECT *
       FROM sgt.shift
       WHERE subject = subject_code;
   ELSE
@@ -502,5 +500,24 @@ BEGIN
   ELSE
     RAISE EXCEPTION 'Shift not found.';
   END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION sgt.get_shift_enrolled_students(shift_code VARCHAR, subject_code VARCHAR)
+RETURNS TABLE (student_email VARCHAR) AS $$
+BEGIN
+  RETURN QUERY
+    SELECT student
+    FROM sgt.student_shift
+    WHERE (shift = shift_code AND subject = subject_code);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION sgt.update_coordinator(subject_code VARCHAR, new_coordinator VARCHAR)
+RETURNS VOID AS $$
+BEGIN
+  UPDATE sgt.subject
+  SET coordinator = new_coordinator
+  WHERE code = subject_code;
 END;
 $$ LANGUAGE plpgsql;
