@@ -103,7 +103,7 @@ public class TradeDao implements TradeDaoApi {
   public void deleteDirectTrade(final String student, final String subject) {
     try {
       this.connection = PostgreSql.connect();
-      String query = "SELECT sgt.delete_direct_tarde(?, ?)";
+      String query = "SELECT sgt.delete_direct_trade(?, ?)";
       PreparedStatement statement = this.connection.prepareStatement(query);
       statement.setString(1, student);
       statement.setString(2, subject);
