@@ -14,6 +14,7 @@ import java.util.HashMap;
 public class JProfessor extends javax.swing.JFrame {
 
   private SGT sgt;
+  private Aluno aluno;
   private Professor professor;
   private HashMap<UnidadeCurricular, ArrayList<Turno>> cadeiras;
   private HashMap<String, UnidadeCurricular> listaUcs;
@@ -355,7 +356,7 @@ public class JProfessor extends javax.swing.JFrame {
     UnidadeCurricular u = (UnidadeCurricular) jComboBox2.getSelectedItem();
     Turno t = (Turno) jComboBox3.getSelectedItem();
     Aluno a = (Aluno) jList1.getSelectedValue();
-
+    
     this.sgt.marcaFalta(u, t, a);
     updateList();
     jButton1.setEnabled(false);
@@ -426,7 +427,12 @@ public class JProfessor extends javax.swing.JFrame {
     jButton1.setEnabled(false);
 
     if (t.getProfALecionar().getNumero() == this.professor.getNumero()) {
-      jButton1.setEnabled(true);
+      this.aluno = jList1.getSelectedValue();
+      if(this.aluno == null){
+        jButton1.setEnabled(false);
+      }else{
+        jButton1.setEnabled(true);
+      }
     }
 
     if (u.getRegente().getNumero() == this.professor.getNumero()) {

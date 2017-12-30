@@ -174,6 +174,9 @@ public class SGT {
       
       TradeDao trade = new TradeDao();
       trade.deleteTradeByRequest(origem.getMail(), troca.getUc().getCodigo());
+      trade.deleteDirectTrade(origem.getMail(), troca.getUc().getCodigo());
+      trade.deleteDirectTrade(aluno.getMail(), troca.getUc().getCodigo());
+      
       
       String sOrigem = troca.getOrigem().getTipoAula();
       String sDestino = troca.getDestino().getTipoAula();
@@ -239,6 +242,8 @@ public class SGT {
         
         trade.deleteDirectTrade(aluno.getMail(), u.getCodigo());
         trade.deleteDirectTrade(a.getMail(), u.getCodigo());
+        trade.deleteTradeByRequest(aluno.getMail(), u.getCodigo());
+        trade.deleteTradeByRequest(a.getMail(), u.getCodigo());
         return true;
     }else{
         TradeDao trade = new TradeDao();

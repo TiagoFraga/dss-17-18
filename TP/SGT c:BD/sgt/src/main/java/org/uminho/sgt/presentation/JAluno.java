@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
+import org.uminho.sgt.business.trocas.TrocaNormal;
 
 public class JAluno extends javax.swing.JFrame implements Observer {
 
@@ -858,7 +859,7 @@ public class JAluno extends javax.swing.JFrame implements Observer {
     Turno origem = cadeiras.get(u);
 
     for (Troca t : this.aluno.getTrocas()) {
-      if (t.getUc().getNome().equals(u.getNome())) {
+      if (t.getUc().getNome().equals(u.getNome()) && t instanceof TrocaNormal) {
         jLabel17.setVisible(true);
         jComboBox3.removeAllItems();
         jComboBox3.setEnabled(false);

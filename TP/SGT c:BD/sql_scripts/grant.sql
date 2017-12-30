@@ -14,7 +14,7 @@ GRANT EXECUTE ON FUNCTION sgt.add_trade_by_request(from_student_email character 
 
 GRANT EXECUTE ON FUNCTION sgt.change_shift_teacher(shift_code character varying, subject_code character varying, new_teacher_email character varying) TO g6;
 
-GRANT EXECUTE ON FUNCTION sgt.delete_direct_trade(email character varying, subject_code character varying) TO g6;
+GRANT EXECUTE ON FUNCTION sgt.delete_direct_tarde(email character varying, subject_code character varying) TO g6;
 
 GRANT EXECUTE ON FUNCTION sgt.delete_shift(shift_code character varying, subject_code character varying) TO g6;
 
