@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TradeDao.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TradeDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/internal/TradeDao.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
@@ -60,6 +60,16 @@
                 <marker date="1514648234897" expanded="true" signature="4685:4733" ph="SELECT sgt.g... " />
                 <marker date="1514648234897" expanded="true" signature="5478:5535" ph="SELECT sgt.g... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="54" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="18" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -396,12 +406,12 @@
       <workItem from="1514460444873" duration="23700000" />
       <workItem from="1514540822221" duration="8585000" />
       <workItem from="1514588852723" duration="1245000" />
-      <workItem from="1514643451199" duration="1131000" />
+      <workItem from="1514643451199" duration="1380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49981000" />
+    <option name="totallyTimeSpent" value="50230000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -876,14 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="28" lean-forward="false" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/uminho/sgt/data/dao/ShiftDaoApi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-184">
@@ -932,6 +934,14 @@
             <marker date="1514648234897" expanded="true" signature="4685:4733" ph="SELECT sgt.g... " />
             <marker date="1514648234897" expanded="true" signature="5478:5535" ph="SELECT sgt.g... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="54" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="18" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
